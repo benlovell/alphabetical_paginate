@@ -77,7 +77,7 @@ module AlphabeticalPaginate
         end
       else
         availableLetters = {}
-        self.find_each({batch_size: params[:batch_size]}) do |x|
+        self.find_each(batch_size: params[:batch_size]) do |x|
           slug = eval("x.#{params[:slug_field]}") if params[:slugged_link]
 
           field_val = block_given? ? yield(x).to_s : x.id.to_s
